@@ -1,0 +1,8 @@
+user:~$ python3
+Python 3.11.x (default, May 15 2026, 20:00:00) 
+[GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import EmotionDetection
+>>> EmotionDetection.emotion_detector("This is a packaging test")
+{'anger': 0.01, 'disgust': 0.01, 'fear': 0.01, 'joy': 0.01, 'sadness': 0.01, 'dominant_emotion': 'anger'}
+>>>
