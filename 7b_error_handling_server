@@ -1,0 +1,24 @@
+@app.route("/emotionDetector")
+def sent_detector():
+    """
+    Route that receives the text to be analyzed from the HTML GUI,
+    runs it through the emotion_detector function, and handles errors.
+    """
+    # Retrieve the text to analyze from the request arguments
+    text_to_analyze = request.args.get('textToAnalyze')
+
+    # Pass the text to the emotion_detector function and store the response
+    response = emotion_detector(text_to_analyze)
+
+    # Task 7: Handling of blank input errors
+    # If the dominant_emotion is None, it indicates a 400 error from the API
+    if response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!"
+
+    # Return the successful response string if input is valid
+    return (
+        f"For the given statement, the system response is 'anger': {response['anger']}, "
+        f"'disgust': {response['disgust']}, 'fear': {response['fear']}, "
+        f"'joy': {response['joy']} and 'sadness': {response['sadness']}. "
+        f"The dominant emotion is {response['dominant_emotion']}."
+    )
